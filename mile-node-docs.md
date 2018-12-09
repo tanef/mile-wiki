@@ -32,7 +32,7 @@ To set up [active (consesus) node](#active-consensus-node) you need to go trough
 3. [Run node shell](#run-node-shell)
 3. [Register node](#node-registration) 
 
-To set up [passive node](#passive) you need only steps 1—3.
+To set up [passive node](#passive-node) you need only steps 1—3.
 
 ### Requirements
 
