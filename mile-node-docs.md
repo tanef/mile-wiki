@@ -1,11 +1,11 @@
 # Mile Node Ducumentation 
 
-* [Introduction] (#introduction)
-* [Node Setup] (#node-setup)
-* [Minting Premium] (#minting-premium)
-* [Mile Shell Help] (#mile-shell-help)
-* [Join Mile Testnet] (#join-mile-test-net)
-* [FAQ] (#faq)
+* [Introduction](#introduction)
+* [Node Setup](#node-setup)
+* [Minting Premium](#minting-premium)
+* [Mile Shell Help](#mile-shell-help)
+* [Join Mile Testnet](#join-mile-test-net)
+* [FAQ](#faq)
 
 ## Introduction
 There are two types of nodes in the blockchain:
