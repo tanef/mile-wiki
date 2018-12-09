@@ -4,7 +4,7 @@
 * [Node Setup](#node-setup)
 * [Minting Premium](#minting-premium)
 * [Mile Shell Help](#mile-shell-help)
-* [Join Mile Testnet](#join-mile-test-net)
+* [Join Mile Testnet](#join-mile-testnet)
 * [FAQ](#faq)
 
 ## Introduction
