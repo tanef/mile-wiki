@@ -27,9 +27,8 @@ To run a node your node host must comply with certain [requirements](#requiremen
 
 To set up [active (consesus) node](#active-consensus-node) you need to go trough these steps:
 
-1. [Download and install Mile Node](#download-and-install-mile-node)
-2. [Download and install Mile Shell](#download-and-install-mile-shell)
-3. [Run node shell](#run-node-shell)
+1. [Download and install Mile Node And Mile Node Help](#download-and-install-mile-node-and-mile-node-shell)
+2. [Run node shell](#run-node-shell)
 3. [Register node](#node-registration) 
 
 To set up [passive node](#passive-node) you need only steps 1—3.
@@ -48,44 +47,72 @@ To set up [passive node](#passive-node) you need only steps 1—3.
  
 * Static IP address (only for active nodes).
 
-### Download And Install Mile Node
+### Download And Install Mile Node And Mile Node Shell
 
-You can install Mile Node ode using RPM or YUM.
+You can install Mile Node using package managers like [RPM](#RPM) or [YUM](#YUM).
 
 #### RPM 
 
-**Domnload and install**
+##### Install Mile Node
+
+Domnload and install:
 
 ```
 $ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mile-0.4x-46.x86_64.rpm?raw=true # install binaries
-$ rpm -qi mile # check installations
+```
+Check installations:
+
+```
+$ rpm -qi mile
 ```
 
-**Download only** 
+Download only: 
 
 ```
 $ wget -O mile-0.4x-46.x86_64.rpm https://github.com/mile-core/mile-files/blob/master/mile-0.4x-46.x86_64.rpm?raw=true
 ```
 
-**Update**
-
-In case Mile node was installed before.
+Update (in case Mile Node was installed before):
 
 ```
 $ rpm -Uvh https://github.com/mile-core/mile-files/blob/master/mile-0.4x-46.x86_64.rpm?raw=true
 ```
 
-**Unistall**
+Unistall:
 
 ```
 $ rpm -e mile
 ```
+##### Install Mile Shell 
 
-#### YUM
+Domnload and install:
 
-### Download And Install Mile Shell 
+```
+$ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
+```
+Check installations:
 
-#### RPM
+```
+$ rpm -qi mileshell
+```
+Download only: 
+
+```
+$ wget -O mileshell-0.4x-1.x86_64.rpm https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
+```
+
+Update (in case Mile Shell was installed before):
+
+```
+$ rpm -Uvh https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
+```
+
+Unistall:
+
+```
+$ rpm -e mileshell
+```
+
 #### YUM
 
 ### Run Node Shell  
@@ -236,3 +263,11 @@ ____
 ### Can I move node from one host to another?
 
 ### What are commissions for transactions?
+
+
+
+
+
+
+
+
