@@ -23,16 +23,16 @@ is 8,5—13% per annum depending on deposit volume and  you receive depends on t
 
 ## Node Setup
 
-To run a node your node host must comply with certain [requirements] (#requirements).
+To run a node your node host must comply with certain [requirements](#requirements).
 
 To set up [active (consesus) node](#active-consensus-node) you need to go trough these steps:
 
 1. [Download and install Mile Node](#download-and-install-mile-node)
 2. [Download and install Mile Shell](#download-and-install-mile-shell)
 3. [Run node shell](#run-node-shell)
-3. [Register node] (#node-registration) 
+3. [Register node](#node-registration) 
 
-To set up [passive node] (#passive) you need only steps 1—3.
+To set up [passive node](#passive) you need only steps 1—3.
 
 ### Requirements
 
@@ -92,9 +92,9 @@ $ rpm -e mile
 
 ### Node Registration 
 
-To register node you need to lock **10 000 — 100 000 XDR** on your node. That is, you have to have [wallet] (#create-wallet) with proper amount in XDR or [MILE] (#issuing-xdr-with-mile) deposited. You can buy MILE on the [open market] (https://github.com/mile-core/mile-docs/wiki/faq#how-i-can-buy-mile).
+To register node you need to lock **10 000 — 100 000 XDR** on your node. That is, you have to have [wallet](#create-wallet) with proper amount in XDR or [MILE](#issuing-xdr-with-mile) deposited. You can buy MILE on the [open market](https://github.com/mile-core/mile-docs/wiki/faq#how-i-can-buy-mile).
 
-As soon as [minting premium] (#minting-premium) depends on the amount of blocks in the blockchain your node closed (i.e. 
+As soon as [minting premium](#minting-premium) depends on the amount of blocks in the blockchain your node closed (i.e. 
 
 **Note:** A node should have a static IP address.   
 
@@ -120,13 +120,13 @@ Where:<br>
 `<wallet_names>` – your local wallet name<br>
 `<password>` – your local wallet password (if there is one)
 
-This command will lock MILE and emit XDR in your wallet in amount corresponding to current MILE/XDR rate (check [current rate](#blockchain-state)). Upon completion check your [wallet state] (#check-wallet-state) to make sure XDR appear in the wallet. Otherwise repeat the operation as transaction can be rejected by blockchain.
+This command will lock MILE and emit XDR in your wallet in amount corresponding to current MILE/XDR rate (check [current rate](#blockchain-state)). Upon completion check your [wallet state](#check-wallet-state) to make sure XDR appear in the wallet. Otherwise repeat the operation as transaction can be rejected by blockchain.
 
 **NOTE:** All MILE assets in your wallet will be locked. You will be able to unlock MILE by submitting proper XDR amount according to current MILE/XDR rate (reverse emission of MILE with XDR). 0,2% in XDR is charged for that operation. 
 
 You can start emission with any amount in MILE. You will not be able to issue XDR with MILE if you have already locked MILE in this wallet. 
 
-For more information about *emission transaction* command see [Mile Shell Help] (#emission). 
+For more information about *emission transaction* command see [Mile Shell Help](#emission). 
 
 #### Register Node
 
@@ -141,11 +141,11 @@ Where:<br>
 
 This command will register an active node on specified IP address with selected amount of XDR with no commission fee for this transaction. 
 
-The amount of XDR you set during registration will be locked in you wallet, therefore you will not be able to make any transactions with this amount unless you [unregister the node] (#unregister-node) (commission fee of 1 XDR is charged for that operation).
+The amount of XDR you set during registration will be locked in you wallet, therefore you will not be able to make any transactions with this amount unless you [unregister the node](#unregister-node) (commission fee of 1 XDR is charged for that operation).
 
 **Note:** The amount of XDR with which you register node can only be set once and can not be updated for this node. To update the amount of XDR you need to unregister node a commission fee of 1 XDR is charged for that operation and then register it again.
 
-For more information about *register node* command see [Mile Shell Help] (#register-node). 
+For more information about *register node* command see [Mile Shell Help](#register-node). 
 
 Upon completion of registration check your wallet state to make sure tag "Node" and node IP address appeared in your wallet:
 
