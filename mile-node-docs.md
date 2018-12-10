@@ -27,11 +27,13 @@ To run a node your node host must comply with certain [requirements](#requiremen
 
 To set up [active (consesus) node](#active-consensus-node) you need to go trough these steps:
 
-1. [Download and install Mile Node And Mile Node Help](#download-and-install-mile-node-and-mile-node-shell)
-2. [Run node shell](#run-node-shell)
+1. [Download and install Mile Node And Mile Node](#download-and-install-mile-node-and-mile-node-shell)
+2. [Launch Mile Node And Mile Node Shell](#launch-mile-node-and-mile-node-shell)
 3. [Register node](#node-registration) 
 
-To set up [passive node](#passive-node) you need only steps 1—3.
+To set up [passive node](#passive-node) you need only steps 1—2.
+
+**Note:** As soon as [minting premium](#minting-premium) for running an active node depends on the amount of blocks in the blockchain your node closed, to receive the maximum possible premium your node have to stay active and online permanently. To do so you might want to use web hosting service. 
 
 ### Requirements
 
@@ -49,65 +51,84 @@ To set up [passive node](#passive-node) you need only steps 1—3.
 
 ### Download And Install Mile Node And Mile Node Shell
 
-You can install Mile Node using package managers like [RPM](#RPM) or [YUM](#YUM).
+You can install Mile Node and Mile Shell using package managers like [RPM](#RPM) or [YUM](#YUM).
+
+Mainnet Genesis Block is included in the package.
 
 #### RPM 
 
 ##### Install Mile Node
 
-Domnload and install:
+Domnload and install Mile Node:
 
 ```
-$ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mile-0.4x-46.x86_64.rpm?raw=true # install binaries
+$ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mile-0.4x-46.x86_64.rpm?raw=true
 ```
-Check installations:
+Check Mile Node installations:
 
 ```
 $ rpm -qi mile
 ```
+___
+###### Other Options
 
-Download only: 
+Mile Node download only: 
 
 ```
 $ wget -O mile-0.4x-46.x86_64.rpm https://github.com/mile-core/mile-files/blob/master/mile-0.4x-46.x86_64.rpm?raw=true
 ```
 
-Update (in case Mile Node was installed before):
+Install previously downloaded Mile Node:
+
+```
+$ rpm -ivh mile-0.4x-46.x86_64.rpm
+```
+
+Update Mile Node (in case Mile Node was installed before):
 
 ```
 $ rpm -Uvh https://github.com/mile-core/mile-files/blob/master/mile-0.4x-46.x86_64.rpm?raw=true
 ```
 
-Unistall:
+Unistall Mile Node:
 
 ```
 $ rpm -e mile
 ```
 ##### Install Mile Shell 
 
-Domnload and install:
+Domnload and install Mile Shell:
 
 ```
 $ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
 ```
-Check installations:
+Check Mile Shell installations:
 
 ```
 $ rpm -qi mileshell
 ```
-Download only: 
+___
+###### Other Options
+
+Mile Shell download only: 
 
 ```
 $ wget -O mileshell-0.4x-1.x86_64.rpm https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
 ```
 
-Update (in case Mile Shell was installed before):
+Install previously downloaded Mile Shell:
+
+```
+$ rpm -ivh mileshell-0.4x-1.x86_64.rpm
+```
+
+Update Mile Shell (in case Mile Shell was installed before):
 
 ```
 $ rpm -Uvh https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
 ```
 
-Unistall:
+Unistall Mile Shell:
 
 ```
 $ rpm -e mileshell
@@ -115,15 +136,89 @@ $ rpm -e mileshell
 
 #### YUM
 
-### Run Node Shell  
+##### Add YUM Repo
+
+```
+$ vi /etc/yum.repos.d/mile.repo
+```
+
+##### Edit mile.repo file
+
+Open mile.repo file and write the following content to the file:
+
+```
+[mile]
+name=Mile Unity Foundation
+gpgcheck = 0
+enabled=1 
+baseurl=https://repo.mile.global/mainnet/
+``` 
+
+##### Install Mile Node
+
+```
+$ yum install mile
+```
+
+##### Install Mile Shell
+
+```
+$ yum install mileshell
+```
+
+### Launch Mile Node And Mile Node Shell
+
+#### Launch Mile Node
+
+Start Mile Node:
+
+```
+$ systemctl start mile
+```
+___
+###### Other Options
+
+Check Mile Node status:
+
+```
+$ systemctl status mile
+```
+
+Stop Mile Node:
+
+```
+$ systemctl stop mile
+```
+
+#### Launch Mile Shell  
+
+You can either start Mile Shell on node host or on remote host.
+
+Start Mile Shell on node host: 
+
+```
+$ shell.chaos
+```
+
+Start Mile Shell on node host:
+
+```
+$ shell.chaos -i <your.node.address>
+```
+___
+###### Other Options
+
+Exit from Mile Shell:
+
+```
+[chaos@mile]> exit
+```
+
+For full list of available commands see [Mile Shell Help](#mile-shell-help).
 
 ### Node Registration 
 
-To register node you need to lock **10 000 — 100 000 XDR** on your node. That is, you have to have [wallet](#create-wallet) with proper amount in XDR or [MILE](#issuing-xdr-with-mile) deposited. You can buy MILE on the [open market](https://github.com/mile-core/mile-docs/wiki/faq#how-i-can-buy-mile).
-
-As soon as [minting premium](#minting-premium) depends on the amount of blocks in the blockchain your node closed (i.e. 
-
-**Note:** A node should have a static IP address.   
+To register node you need to lock **10 000 — 100 000 XDR** on your node. That is, you have to have [wallet](#create-wallet) with proper amount in XDR or [MILE](#issue-xdr-with-mile) deposited. You can buy MILE on the [open market](https://github.com/mile-core/mile-docs/wiki/faq#how-i-can-buy-mile).   
 
 #### Create Wallet
 You can create new wallet or add your existing wallet to database.
@@ -137,7 +232,7 @@ You can create new wallet or add your existing wallet to database.
 
 You can check your wallet state 
 
-#### Issuing XDR with MILE
+#### Issue XDR with MILE
 If you have no XDR but you have MILE you can issue XDR with MILE with no commission fee for this transaction:
 
 ```
@@ -263,11 +358,3 @@ ____
 ### Can I move node from one host to another?
 
 ### What are commissions for transactions?
-
-
-
-
-
-
-
-
