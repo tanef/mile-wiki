@@ -384,6 +384,14 @@ The minting premium is delivered once in 1-2 days to node-associated wallet.
 
 ## Mile Shell Commands
 
+* [Help](#help)
+* [Settings](#settings)
+* [Node Wallet](#node-wallet)
+* [Local Wallet](#local-wallet)
+* [Blockchain Operations](#blockchain-operations)
+* [Blockchain Transactions](#blockchain-transactions)
+
+
 ### Help
 
 To see Mile Shell help commands type: 
@@ -416,7 +424,13 @@ Type:<br>
 
 ### Settings
 
+* [`shell version`](#shell-version)
+* [`shell set block event disable|enable`](#blockchain-event-enable-disable)
+* [`shell set show transaction digest disable|enable`](#transaction-digest-enable-disable)
+* [`shell settings`](#shell-settings)
+
 #### Shell Version
+
 ```
 shell version
 ```
@@ -432,13 +446,61 @@ Network lib version : 0.90
 
 ```
 
+#### Blockchain event enable/disable
+
+```
+shell set block event disable|enable
+```
+`disable` or `enable` event message when new block is created.
+
+#### Transaction digest enable/disable
+
+```
+shell set show transaction digest disable|enable
+```
+`disable` or `enable` event message when transaction is created.
+
+#### Shell settings
+
+```
+shell settings
+```
+
+Show status of shell settings.
+
+Example output:
+
+```
+New block event is      : disable
+Show transaction digest : enable
+```
+
 ### Node Wallet
+
+**Node wallet commands are intended for developer purposes only**
 
 ### Local Wallet
 
+* [`create local wallet <wallet_name> [password <password>]`](#create-local-wallet)
+* [`create local wallet from keys <wallet_name> public key <public_key> private key <private_key> [password <password>]`](#create-local-wallet-from-keys)
+
+#### Create local wallet
+
+```
+create local wallet <wallet_name> [password <password>]
+```
+Where:<br>
+`<wallet_name>` – wallet name you want to set<br>
+`<password>` – wallet password you want to set<br>
+
+Create new local wallet.
+
+#### Create local wallet from keys
+
+
 ### Blockchain Operations
 
-#### Blockchain State
+#### Blockchain state
 
 ```
 get blockchain state
@@ -523,7 +585,7 @@ Replace existing mainnet genesis block:
 $ cp ./genesis_block_testnet.txt  /etc/mile/genesis_block.txt 
 ```
 
-You can use Mile Shell to manage your test node. [Test Wallet]( https://wallet.testnet.mile.global) for managing your wallet as well as [Test Explorer](https://explorer.testnet.mile.global) for blockchain monitoring are also avaliable in testnet.
+You can use Mile Shell to manage your test node. [Test Wallet]( https://wallet.testnet.mile.global) for managing your wallet as well as [test Explorer](https://explorer.testnet.mile.global) for blockchain monitoring are also avaliable in testnet.
 
 ## FAQ
 
