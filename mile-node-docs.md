@@ -4,7 +4,7 @@
 * [Node Setup](#node-setup)
 * [Minting Premium](#minting-premium)
 * [Mile Shell Help](#mile-shell-help)
-* [Other Ways To Manage And Monitor Wallets And Transactions](#other-ways-to-manage-and-monitor-wallets-and-transactions)
+* [Manage And Monitor Wallets And Transactions](#manage-and-monitor-wallets-and-transactions)
 * [Join Mile Testnet](#join-mile-testnet)
 * [FAQ](#faq)
 
@@ -74,7 +74,9 @@ Where `<version>` is the version of Mile Node.
 ```
 $ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mile-0.4x-56.x86_64.rpm?raw=true
 ```
-will install Mile Node ver. 0.4x-56
+install Mile Node ver. 0.4x-56
+<br>
+<br>
 
 Check Mile Node installations:
 
@@ -89,28 +91,20 @@ Mile Node download only:
 ```
 $ wget -O mile-<version>.x86_64.rpm https://github.com/mile-core/mile-files/blob/master/mile-<version>.x86_64.rpm?raw=true
 ```
-Where `<version>` is the version of Mile Node (e.g. ver. <0.4x-56>). 
-<br>
-<br>
 
 Install previously downloaded Mile Node:
 
 ```
 $ rpm -ivh mile-<version>.x86_64.rpm
 ```
-Where `<version>` is the version of Mile Node (e.g. ver. <0.4x-56>).
-<br>
-<br>
 
 Update Mile Node (in case Mile Node was installed before):
 
 ```
 $ rpm -Uvh https://github.com/mile-core/mile-files/blob/master/mile-<version>.x86_64.rpm?raw=true
 ```
-Where `<version>` is the version of Mile Node (e.g. ver. <0.4x-56>).
-<br>
-<br>
 
+**In this section** `<version>` **is the version of Mile Node** (e.g. ver. `0.4x-56`)
 
 Unistall Mile Node:
 
@@ -122,8 +116,20 @@ $ rpm -e mile
 Domnload and install Mile Shell:
 
 ```
-$ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
+$ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mileshell-<version>.x86_64.rpm?raw=true
 ```
+
+Where `<version>` is the version of Mile Shell.
+
+***Example:***
+
+```
+$ rpm -ivh https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-4.x86_64.rpm?raw=true
+```
+will install Mile Shell ver. 0.4x-4
+<br>
+<br>
+
 Check Mile Shell installations:
 
 ```
@@ -135,20 +141,21 @@ ___
 Mile Shell download only: 
 
 ```
-$ wget -O mileshell-0.4x-1.x86_64.rpm https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
+$ wget -O mileshell-<version>.x86_64.rpm https://github.com/mile-core/mile-files/blob/master/mileshell-<version>.x86_64.rpm?raw=true
 ```
 
 Install previously downloaded Mile Shell:
 
 ```
-$ rpm -ivh mileshell-0.4x-1.x86_64.rpm
+$ rpm -ivh mileshell-<version>.x86_64.rpm
 ```
 
 Update Mile Shell (in case Mile Shell was installed before):
 
 ```
-$ rpm -Uvh https://github.com/mile-core/mile-files/blob/master/mileshell-0.4x-1.x86_64.rpm?raw=true
+$ rpm -Uvh https://github.com/mile-core/mile-files/blob/master/mileshell-<version>.x86_64.rpm?raw=true
 ```
+**In this section** `<version>` **is the version of Mile Shell** (e.g. ver. `0.4x-4`)
 
 Unistall Mile Shell:
 
@@ -176,31 +183,16 @@ enabled=1
 baseurl=https://repo.mile.global/mainnet/
 ``` 
 
-##### Install Mile Node
+##### Install/Update Mile Node
 
 ```
 $ yum install mile
 ```
 
-##### Install or update Mile Node from downloaded local rpm package
-
-перед этим wget!!! также как в описании rpm ===
-```
-$ yum localinstall ./mileshell-0.4x-4.x86_64.rpm 
-```
-
-
 ##### Install Mile Shell
 
 ```
 $ yum install mileshell
-```
-
-##### Install or update Mile Shell from downloaded local rpm package
-
-перед этим wget только для shell уже!!! также как в описании rpm ===
-```
-$ yum localinstall ./mileshell-0.4x-4.x86_64.rpm 
 ```
 
 ### Launch Mile Node And Mile Node Shell
@@ -261,9 +253,37 @@ To register node you need to lock **10 000 — 100 000 XDR** on your node. That 
 You can create new wallet or add your existing wallet to database.
 
 ##### Create New Wallet
-**Note:** Password is optional, but it is highly recommended. 
+
+```
+[chaos@mile]> create local wallet <wallet_name> [password <password>]
+```
+Where:<br>
+`<wallet_name>` – wallet name you want to set<br>
+`<password>` – wallet password you want to set (password is optional, but it is highly recommended)<br>
+
+This command will generate private and public keys and create a new wallet with them. File wallet_name.wallet will be created in the current directory.
+
+Output:
+
+```
+Private Key: "xxxxxxxxxxxxxxx"
+Public Key : "xxx"
+```
 
 ##### Add Existing Wallet
+
+If you already have a wallet:
+
+```
+create local wallet from keys <wallet_name> public key <public_key> private key <private_key> [password <password>]
+```
+Where:<br>
+`<wallet_name>` – wallet name you want to set<br>
+`<public_key>` – public key of your existing wallet<br>
+`<private_key>` – private key of your existing wallet<br>
+`<password>` – wallet password you want to set (password is optional, but it is highly recommended)<br>
+
+This command will create a new wallet from your existing public and private keys. File wallet_name.wallet will be created in the current directory.
 
 ##### Check Wallet State
 
@@ -450,7 +470,7 @@ In case MILE/XDR rate has grown this command will emit additional XDR with your 
 ____
 ### Exit shell
 
-## Other Ways To Manage And Monitor Wallets And Transactions
+## Manage And Monitor Wallets And Transactions
 
 ## Join Mile Testnet
 
