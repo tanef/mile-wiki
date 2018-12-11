@@ -287,7 +287,25 @@ This command will create a new wallet from your existing public and private keys
 
 ##### Check Wallet State
 
-You can check your wallet state 
+To check your wallet state in Mile Shell use one of two commands:
+
+* Get local wallet state command
+
+ ```
+[chaos@mile]> get local wallet state <wallet-name>
+``` 
+Where:<br>
+`<wallet_name>` – your wallet name
+
+* Get local wallet state command
+
+ ```
+[chaos@mile]> get wallet state key <public_key>
+``` 
+Where:<br>
+`<public_key>` – public key of your wallet
+
+You can also check your wallet state on [Wallet](https://wallet.mile.global/wallet_info) or [Explorer](https://explorer.mile.global/wallet) websites.
 
 #### Issue XDR with MILE
 If you have no XDR but you have MILE you can issue XDR with MILE with no commission fee for this transaction:
@@ -301,7 +319,7 @@ Where:<br>
 
 This command will lock MILE and emit XDR in your wallet in amount corresponding to current MILE/XDR rate (check [current rate](#blockchain-state)). Upon completion check your [wallet state](#check-wallet-state) to make sure XDR appear in the wallet. Otherwise repeat the operation as transaction can be rejected by blockchain.
 
-**NOTE:** All MILE assets in your wallet will be locked. You will be able to unlock MILE by submitting proper XDR amount according to current MILE/XDR rate (reverse emission of MILE with XDR). 0,2% in XDR is charged for that operation. 
+**NOTE:** All MILE assets in your wallet will be locked. You will be able to unlock MILE by submitting proper XDR amount according to current MILE/XDR rate (reverse emission of MILE with XDR). 0,2% in XDR is charged for that [operation](#update-emission). 
 
 You can start emission with any amount in MILE. You will not be able to issue XDR with MILE if you have already locked MILE in this wallet. 
 
