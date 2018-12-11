@@ -3,24 +3,22 @@
 * [Introduction](#introduction)
 * [Node Setup](#node-setup)
 * [Minting Premium](#minting-premium)
-* [Mile Shell Help](#mile-shell-help)
-* [Manage And Monitor Wallets And Transactions](#manage-and-monitor-wallets-and-transactions)
+* [Mile Shell Commands](#mile-shell-commands)
 * [Join Mile Testnet](#join-mile-testnet)
 * [FAQ](#faq)
 
 ## Introduction
-There are two types of nodes in the blockchain:
+Basically there are two types of nodes: active and passive nodes.
 
 ### Active (Consensus) Node
 
-The minting premium for running a consensus node depends on two factors:
+Registered with 10 000—100 000 XDR node that takes part in blockchain consensus (that keeps blockchain operation on). 
 
-* how many blocks you closed 
-* ammount of XDR with wich you registered your node
-
-is 8,5—13% per annum depending on deposit volume and  you receive depends on the 
+Active nodes can vote for MILE/XDR rate and can receive [minting premium](#minting premium).
 
 ### Passive Node
+
+Unregistered node. It doesn't take part in blockchain consensus, doesn't receive minting premium, it can't vote for MILE/XDR rate, but it stores the full blockchain. 
 
 ## Node Setup
 
@@ -28,8 +26,8 @@ To run a node your node host must comply with certain [requirements](#requiremen
 
 To set up [active (consesus) node](#active-consensus-node) you need to go trough these steps:
 
-1. [Download and install Mile Node And Mile Node](#download-and-install-mile-node-and-mile-node-shell)
-2. [Launch Mile Node And Mile Node Shell](#launch-mile-node-and-mile-node-shell)
+1. [Download and install Mile Node And Mile Shell](#download-and-install-mile-node-and-mile-node-shell)
+2. [Launch Mile Node And Mile Shell](#launch-mile-node-and-mile-shell)
 3. [Register node](#node-registration) 
 
 To set up [passive node](#passive-node) you need only steps 1—2.
@@ -50,7 +48,7 @@ To set up [passive node](#passive-node) you need only steps 1—2.
  
 * Static IP address (only for active nodes).
 
-### Download And Install Mile Node And Mile Node Shell
+### Download And Install Mile Node And Mile Shell
 
 You can install Mile Node and Mile Shell using package managers like [RPM](#RPM) or [YUM](#YUM).
 
@@ -195,7 +193,7 @@ $ yum install mile
 $ yum install mileshell
 ```
 
-### Launch Mile Node And Mile Node Shell
+### Launch Mile Node And Mile Shell
 
 #### Launch Mile Node
 
@@ -247,7 +245,7 @@ For full list of available commands see [Mile Shell Commads](#mile-shell-help).
 
 ### Node Registration 
 
-To register node you need to lock **10 000 — 100 000 XDR** on your node. That is, you have to have [wallet](#create-wallet) with proper amount in XDR or [MILE](#issue-xdr-with-mile) deposited. You can buy MILE on the [open market](https://github.com/mile-core/mile-docs/wiki/faq#how-i-can-buy-mile).   
+To register node you need to lock **10 000—100 000 XDR** on your node. That is, you have to have [wallet](#create-wallet) with proper amount in XDR or [MILE](#issue-xdr-with-mile) deposited. You can buy MILE on the [open market](https://github.com/mile-core/mile-docs/wiki/faq#how-i-can-buy-mile).   
 
 #### Create Wallet
 You can create new wallet or add your existing wallet to database.
@@ -305,7 +303,24 @@ Where:<br>
 Where:<br>
 `<public_key>` – public key of your wallet
 
-You can also check your wallet state on [Wallet](https://wallet.mile.global/wallet_info) or [Explorer](https://explorer.mile.global/wallet) websites.
+Output:
+
+```
+Wallet                  : "<your wallet name>" or "<your wallet public key>" 
+xdr                     : "<your wallet XDR balance>"
+Freeze XDR              : "<amount of XDR locked for node registration>"
+mile                    : "<your wallet MILE balance>"
+Freeze MILE             : "<amount of MILE locked XDR emission>"
+Tags                    : "Node"
+Node address            : "your node IP address"
+Last transaction id     : "xxxxxxx"
+Is transactions exist   : "yes"
+
+``` 
+`Freeze XDR`, `Tags`, `Node address` – appear only if you have a registered node.<br>
+`Freeze MILE` - appear only if you made emission transaction to issue XDR with MILE. 
+
+**Note:** You can also check your wallet state on [Wallet](https://wallet.mile.global/wallet_info) or [Explorer](https://explorer.mile.global/wallet) websites.
 
 #### Issue XDR with MILE
 If you have no XDR but you have MILE you can issue XDR with MILE with no commission fee for this transaction:
@@ -333,14 +348,14 @@ For more information about *emission transaction* command see [Mile Shell Comman
 Where:<br>
 `<wallet_name>` – your local wallet name with proper XDR amount<br>
 `<address>` – your node static IP address<br> 
-`<amount>` – amount of XDR (10 000 — 100 000 XDR) with which you register your node<br> 
+`<amount>` – amount of XDR (10 000 — 100 000 XDR) you wish to deposit to register your node<br> 
 `<password>` – your local wallet password (if there is one)
 
-This command will register an active node on specified IP address with selected amount of XDR with no commission fee for this transaction. 
+This command will register an active node on specified IP address with selected amount of XDR as a deposit with no commission fee for this transaction. 
 
 The amount of XDR you set during registration will be locked in you wallet, therefore you will not be able to make any transactions with this amount unless you [unregister the node](#unregister-node) (commission fee of 1 XDR is charged for that operation).
 
-**Note:** The amount of XDR with which you register node can only be set once and can not be updated for this node. To update the amount of XDR you need to unregister node a commission fee of 1 XDR is charged for that operation and then register it again.
+**Note:** The amount of XDR deposited to register the node can only be set once and can not be updated for this node. To update the amount of XDR you need to unregister node (a commission fee of 1 XDR is charged for that operation and then register it again).
 
 For more information about *register node* command see [Mile Shell Commands](#register-node). 
 
@@ -359,6 +374,13 @@ Freeze mile             : "0"
 ```
 
 ## Minting Premium
+
+Minting premium is provided for operating [active (consensus) node](#active-consensus-node). The amount is **8,5—13%** of deposited volume of XDR per annum depending on two factors:
+
+* amount of XDR deposited to register a node (the dependence is parabolic — the closer the 100 000 XDR deposit, the faster the % is growing)
+* how many times the node participated in consensus (i.e. was the node operating permanently)   
+
+The minting premium is delivered once in 1-2 days to node-associated wallet. 
 
 ## Mile Shell Commands
 
@@ -439,8 +461,7 @@ Blockchain state          : "Active"
 Consensus round           : "0"
 Mile courses              : "1.21"
 ```
-Where: 
-
+Where:<br> 
 `Block count` – number of blocks in blockchain<br>
 `Last block digest` – digest of the last block<br>
 `Last block merkle root` – **?????**<br>
@@ -488,13 +509,23 @@ In case MILE/XDR rate has grown this command will emit additional XDR with your 
 ____
 ### Exit shell
 
-## Manage And Monitor Wallets And Transactions
-
 ## Join Mile Testnet
 
-## FAQ
+Download testnet genesis block:
 
-### Зачем нужна нода?
+```
+$ wget -O genesis_block_testnet.txt https://github.com/mile-core/mile-files/blob/master/genesis_block_testnet.txt?raw=true 
+```
+
+Replace existing mainnet genesis block:
+
+```
+$ cp ./genesis_block_testnet.txt  /etc/mile/genesis_block.txt 
+```
+
+You can use Mile Shell to manage your test node. [Test Wallet]( https://wallet.testnet.mile.global) for managing your wallet as well as [Test Explorer](https://explorer.testnet.mile.global) for blockchain monitoring are also avaliable in testnet.
+
+## FAQ
 
 ### Can I run a node if I don't have MILE or XDR?
 
