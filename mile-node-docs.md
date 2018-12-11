@@ -359,19 +359,7 @@ The amount of XDR you set during registration will be locked in you wallet, ther
 
 For more information about *register node* command see [Mile Shell Commands](#register-node). 
 
-Upon completion of registration check your wallet state to make sure tag "Node" and node IP address appeared in your wallet:
-
-```
-[chaos@mile]> get local wallet state <name-of-your-wallet>
-Wallet                  : "<your wallet name>"
-xdr                     : "<your wallet XDR balance>"
-mile                    : "<your wallet MILE balance>"
-Tags                    : "Node"
-Node address            : "<your node IP address>"
-Last transaction id     : "xxxxx"
-Is transactions exist   : "yes"
-Freeze mile             : "0"
-```
+Upon completion of registration check your [wallet state](#check-wallet-state) to make sure tag "Node" and node IP address appeared in your wallet.
 
 ## Minting Premium
 
@@ -483,6 +471,12 @@ Show transaction digest : enable
 
 * [`create local wallet <wallet_name> [password <password>]`](#create-local-wallet)
 * [`create local wallet from keys <wallet_name> public key <public_key> private key <private_key> [password <password>]`](#create-local-wallet-from-keys)
+* [`get local wallet keys <wallet_name> [password <password>]`](#get-local-wallet-keys)
+* [`no local wallet <wallet_name> [password <password>]`](#delete-local-wallet)
+* [`no password local wallet <wallet_name> password <password>`](#delete-local-wallet-password)
+* [`change password local wallet <wallet_name> [old password <password>] [new password <password>]`](#change-password-for-local-wallet)
+* [`get local wallet state <wallet_name>`](#get-local-wallet-state)
+* [`get local wallet transaction <wallet> count <count>`](#get-local-wallet-transactions)
 
 #### Create local wallet
 
@@ -497,6 +491,115 @@ Create new local wallet.
 
 #### Create local wallet from keys
 
+```
+create local wallet from keys <wallet_name> public key <public_key> private key <private_key> [password <password>]
+```
+Where:<br>
+`<wallet_name>` – wallet name you want to set<br>
+`<public_key>` – public key of your existing wallet<br>
+`<private_key>` – private key of your existing wallet<br>
+`<password>` – wallet password you want to set<br>
+
+#### Get local wallet keys
+
+```
+get local wallet keys <wallet_name> [password <password>]
+```
+Where:<br>
+`<wallet_name>` – existing local wallet name<br>
+`<password>` – password for the existing local wallet<br>
+
+Shows public and private keys for existing local wallet.
+
+Example output:
+
+```
+Private Key: "xxxxxxxxxxxxxxx"
+Public Key : "xxxx"
+
+```
+
+#### Delete local wallet
+
+```
+no local wallet <wallet_name> [password <password>]
+```
+Where:<br>
+`<wallet_name>` – local wallet name<br>
+`<password>` – password for the local wallet<br>
+
+#### Delete local wallet password
+
+```
+no password local wallet <wallet_name> password <password>
+```
+Where:<br>
+`<wallet_name>` – local wallet name<br>
+`<password>` – password for the local wallet<br>
+
+#### Change password for local wallet
+
+```
+change password local wallet <wallet_name> [old password <password>] [new password <password>]
+```
+Where:<br>
+`<wallet_name>` – local wallet name<br>
+`old password <password>` – old password for the local wallet<br>
+`new password <password>` – password for the local wallet you want to set<br>
+
+#### Get local wallet state
+
+```
+get local wallet state <wallet_name>
+```
+Where:<br>
+`<wallet_name>` – local wallet name<br>
+
+Output:
+
+```
+Wallet                  : "<your wallet name>" or "<your wallet public key>" 
+xdr                     : "<your wallet XDR balance>"
+Freeze XDR              : "<amount of XDR locked for node registration>"
+mile                    : "<your wallet MILE balance>"
+Freeze MILE             : "<amount of MILE locked XDR emission>"
+Tags                    : "Node"
+Node address            : "your node IP address"
+Last transaction id     : "xxxxxxx"
+Is transactions exist   : "yes"
+
+``` 
+`Freeze XDR`, `Tags`, `Node address` – appear only if you have a registered node.<br>
+`Freeze MILE` - appear only if you made emission transaction to issue XDR with MILE. 
+
+#### Get local wallet transactions
+
+```
+get local wallet transaction <wallet> count <count>
+```
+Where:<br>
+`<wallet>` – local wallet name<br>
+`<count>` – number of transactions that will appear (starting from most recent)<br>
+
+Shows list of transactions made with this local wallet.
+
+Otput:
+**????????**
+
+#### Get local wallet list
+
+```
+get local wallet list
+```
+Shows list of local wallets.
+
+Output:
+
+```
+# 0:  <wallet 1 name>
+# 1:  <wallet 2 name>
+# 2:  <wallet 3 name>
+```
 
 ### Blockchain Operations
 
@@ -539,37 +642,44 @@ Where:<br>
 
 ### Blockchain Transactions
 
-#### Register Node
+#### Register node
 
 ```
 unregister node transaction local|node wallet <wallet_name> [password <password>]
 ```
 
-#### Unregister Node
+#### Unregister node
 
 ```
 unregister node transaction local|node wallet <wallet_name> [password <password>]
 ```
-____
-
 
 #### Emission
 
 ```
 emission transaction [mile|xdr] local|node <wallet_names> [password <password>]
 ```
-_____
 
-#### Update Emission
+#### Update emission
 
 ```
 update emission transaction local|node wallet <wallet_name> [password <password>]
 ```
 In case MILE/XDR rate has grown this command will emit additional XDR with your locked MILE in amount of the difference between current MILE/XDR rate and the rate as of your previous emission. 
 
-**Note:** Commission fee for update emission transaction is 0,2% in XDR. The fee is charged even if MILE/XDR rate drops.  
-____
+**Note:** Commission fee for update emission transaction is 0,2% in XDR. The fee is charged even if MILE/XDR rate drops. 
+
+#### Transfer asset 
+
+#### Post token rate
+
+#### Get token rate
+
 ### Exit shell
+
+```
+exit
+```
 
 ## Join Mile Testnet
 
